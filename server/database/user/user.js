@@ -8,7 +8,6 @@ const UserSchema = new mongoose.Schema({
         {
             type: mongoose.Types.ObjectId,
             ref: "Notes",
-            required: true 
         }
     
 },
@@ -16,4 +15,4 @@ const UserSchema = new mongoose.Schema({
     timestamps: true
 });
 
-export const UserModel = mongoose.Model("Users", UserSchema);
+export const UserModel = mongoose.model("Users", UserSchema);
