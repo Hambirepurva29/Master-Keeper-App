@@ -1,6 +1,10 @@
 import mongoose, { mongo } from "mongoose";
 
 const NoteSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Types.ObjectId,
+        ref: "Users"
+      },
     title: {
         type: String, 
         required:true 

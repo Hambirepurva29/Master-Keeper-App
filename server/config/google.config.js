@@ -7,11 +7,16 @@ const GoogleStrategy = googleOAuth.Strategy;
 export default (passport) => {
     passport.use(
         new GoogleStrategy({
-            clientID:process.env.GOOGLE_CLIENT_ID,
-            clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL:"https://localhost:4000/auth/google/callback"
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: "https://localhost:4000/auth/google/callback"
         },
         async (accessToken, refreshToken, profile, done ) => {
+            
+            // UserModel.findOrCreate({ googleId: profile.id }, function (err, user) {
+            //     console.log(profile);
+            //     return done(err, user);
+            //   });
             const newUser = {
                 fullname: profile.displayName,
                 email:profile.email[0].value,
@@ -44,4 +49,5 @@ export default (passport) => {
 
     passport.serializeUser((userData, done) => done(null, { ...userData}));
     passport.deserializeUser((id, done) => done(null, id));
+    
 };
