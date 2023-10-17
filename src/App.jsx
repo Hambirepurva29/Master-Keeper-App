@@ -1,12 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import React from "react";
+
+//HOC
+import HomeLayoutHOC from "./HOC/Home.HOC";
+
+//Components
+import Temp from "./Components/temp";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <h1 className="text-3xl font-bold text-red-500 underline text-center">Hello world!</h1> 
+    <>
+      <HomeLayoutHOC path="/" exact component={Temp}/>
+    </>
   )
 }
 
-export default App
+export default App;
